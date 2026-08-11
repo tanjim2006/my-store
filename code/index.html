@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QATAR ATV & TOYS GALLERY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0b132b;
+            --card-bg: #1c2541;
+            --accent: #00b4d8;
+            --text-main: #ffffff;
+            --text-muted: #a0aab8;
+            --whatsapp-green: #25d366;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 10px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .image-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            padding: 12px;
+            background-color: rgba(0,0,0,0.2);
+        }
+
+        .main-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .main-img:hover {
+            transform: scale(1.02);
+        }
+
+        .thumbnails {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .thumb-img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 6px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+        }
+
+        .thumb-img:hover {
+            opacity: 1;
+        }
+
+        .card-body {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+        }
+
+        .card-desc {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            line-height: 1.4;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            padding-top: 15px;
+        }
+
+        .price-container {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .price-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        .price-value {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+
+        .btn-whatsapp {
+            background-color: var(--whatsapp-green);
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .btn-whatsapp:hover {
+            opacity: 0.9;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 85%;
+            border-radius: 10px;
+            object-fit: contain;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Qatar ATV & Toys Gallery</h1>
+        <p>Tap on any picture to view full screen & zoom in</p>
+    </header>
+
+    <div class="grid">
+
+        <!-- 1. KIDS PLAYSTATION -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/pBvX8hfV/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Kids Playstation">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/pBvX8hfV/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/DggRnz6p/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/HT6H5T0j/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Kids Playstation</h3>
+                <p class="card-desc">Brand new kids playground setup for outdoor & indoor entertainment.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">4,800 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Kids%20Playstation%20(4800%20QAR)" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+       <!-- TENTS 4x6m -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/TDNGR7Db/tents3.jpg" class="main-img" onclick="openZoom(this.src)" alt="Tents 4x6m">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/TDNGR7Db/tents3.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/yBsw0PhY/tents-2.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Tents 4x6m</h3>
+                <p class="card-desc">Spacious and durable tents perfect for camping trips, desert outings, and family vacations.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">3,300 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Tents%204x6m" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+        <!-- FLOOR MAT 25MM -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/chBhJPCY/mat1.jpg" class="main-img" onclick="openZoom(this.src)" alt="Floor Mat 25mm">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/chBhJPCY/mat1.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/ZQXMV9x/mat2.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Floor Mat 25mm</h3>
+                <p class="card-desc">High-density protective floor matting, ideal for kids play areas and safety zones.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">50 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Floor%20Mat%2025mm" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+        <!-- 4. TENTS 3x3m -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/zhFjd4MR/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Tents 3x3m">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/zhFjd4MR/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/mrgWvBm7/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Tents 3x3m</h3>
+                <p class="card-desc">Compact outdoor tent suitable for quick setups, desert trips, and weekend vacations.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">2,200 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Tents%203x3m" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. BUDBUDA PATROL 110CC -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/G4g8GXqC/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Budbuda Patrol 110cc">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/G4g8GXqC/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/nN0xRzd0/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Budbuda Patrol 110cc</h3>
+                <p class="card-desc">Automatic transmission quad bike motorcycle. Engine capacity: 110cc.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">3,250 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Budbuda%20Patrol%20110cc" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. KIDS SWING & SLIDE -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/nMPxWvSq/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Kids Swing and Slide">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/nMPxWvSq/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/sv0v6BDY/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Kids Swing & Slide Set</h3>
+                <p class="card-desc">Fun and safe combo swing and sliding set for kids garden/outdoor play.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">3,800 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Kids%20Swing%20and%20Slide" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 7. KIDS SWINGS (BIG SIZE) -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/FkB6szjM/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Kids Swings Big Size">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Kids Swings (Big Size)</h3>
+                <p class="card-desc">Large playground swing set. Dimensions: Length 5.5m x Width 1.5m x Height 2.2m.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">4,500 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Kids%20Swings%20Big%20Size" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 8. KIDS PLAYSTATION (PREMIUM) -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/2Dx6xmt/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Kids Playstation Premium">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/2Dx6xmt/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/4RNLX4y5/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Kids Playstation (Model B)</h3>
+                <p class="card-desc">Multi-feature playground entertainment unit for children.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">4,800 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Kids%20Playstation%20Model%20B" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 9. BUDBUDA PATROL 125CC -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/7xLh0ztD/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Budbuda Patrol 125cc">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/7xLh0ztD/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/cSFX36QS/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/wN71wz0C/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Budbuda Patrol 125cc</h3>
+                <p class="card-desc">Powerful 125cc quad bike motorcycle for off-road riding.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">4,600 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Budbuda%20Patrol%20125cc" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 10. ELECTRIC SCOOTER 48V -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/1tN6ZZxv/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Electric Scooter 48V">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/1tN6ZZxv/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/xSGzQbc1/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/LzLQNbns/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Electric Scooter 48V (3-Wheels)</h3>
+                <p class="card-desc">High-power 48V 3-wheel electric scooter designed for smooth riding and stability.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">4,800 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Electric%20Scooter%2048V" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 11. BUGGY PATROL 150CC -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/ynrWdnzQ/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Buggy Patrol 150cc">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/ynrWdnzQ/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/by1Bmh4/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/jkwWJmnQ/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/NdbjrN5t/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Buggy Patrol 150cc</h3>
+                <p class="card-desc">150cc automatic gear off-road buggy vehicle built for desert adventures.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">7,000 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Buggy%20Patrol%20150cc" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 12. TRAMPOLINE 12FT -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/TxBm0Jbf/image.jpg" class="main-img" onclick="openZoom(this.src)" alt="Trampoline 12ft">
+                <div class="thumbnails">
+                    <img src="https://i.ibb.co.com/TxBm0Jbf/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                    <img src="https://i.ibb.co.com/zHVMnwkC/image.jpg" class="thumb-img" onclick="openZoom(this.src)">
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Trampoline 12ft</h3>
+                <p class="card-desc">12ft outdoor safety trampoline for kids and family outdoor activity.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">1,250 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Trampoline%2012ft" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- 13. KIDS PLAYSTATION XL -->
+        <div class="card">
+            <div class="image-gallery">
+                <img src="https://i.ibb.co.com/jx9mpFB/swing.jpg" class="main-img" onclick="openZoom(this.src)" alt="Kids Playstation XL">
+            </div>
+            <div class="card-body">
+                <h3 class="card-title">Kids Playstation XL</h3>
+                <p class="card-desc">Large-scale premium playground setup for park & commercial use.</p>
+                <div class="card-footer">
+                    <div class="price-container">
+                        <span class="price-label">Price</span>
+                        <span class="price-value">8,500 QAR</span>
+                    </div>
+                    <a href="https://wa.me/97450031097?text=Hello,%20I%20am%20interested%20in%20Kids%20Playstation%20XL" target="_blank" class="btn-whatsapp">WhatsApp Us</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="imageModal" class="modal" onclick="closeZoom()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="zoomedImg">
+    </div>
+
+    <script>
+        function openZoom(imageSrc) {
+            document.getElementById("imageModal").style.display = "flex";
+            document.getElementById("zoomedImg").src = imageSrc;
+        }
+
+        function closeZoom() {
+            document.getElementById("imageModal").style.display = "none";
+        }
+    </script>
+</body>
+</html>
