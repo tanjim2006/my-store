@@ -2,19 +2,19 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "images/uploads"
-public_folder: "/images/uploads"
+media_folder: "images"
+public_folder: "/images"
 
 collections:
   - name: "products"
     label: "Products"
-    folder: "content/products"
+    folder: "products"
     create: true
     slug: "{{slug}}"
     fields:
-      - {label: "Title (English)", name: "title", widget: "string"}
-      - {label: "Title (Arabic)", name: "title_ar", widget: "string"}
-      - {label: "Price (QAR)", name: "price", widget: "string"}
-      - {label: "Delivery Charge (QAR)", name: "delivery_fee", widget: "string", default: "30 QAR"}
-      - {label: "Description", name: "description", widget: "text"}
-      - {label: "Product Image", name: "image", widget: "image"}
+      - { label: "Title (English)", name: "title_en", widget: "string" }
+      - { label: "Title (Arabic)", name: "title_ar", widget: "string" }
+      - { label: "Price (QAR)", name: "price", widget: "number" }
+      - { label: "Delivery Charge (QAR)", name: "delivery", widget: "number", default: 30 }
+      - { label: "Description", name: "description", widget: "text", required: false }
+      - { label: "Product Image", name: "image", widget: "image" }
