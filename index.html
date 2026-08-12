@@ -1,13 +1,126 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <title>My Store</title>
+  <style>
+    /* Global Styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    /* Product Grid Layout */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      max-width: 1000px;
+      margin: 30px auto;
+    }
+
+    /* Animated Product Card */
+    .product-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      
+      /* Smooth Hover Animation */
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      
+      /* Entrance Fade-In Animation */
+      animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 8px;
+    }
+
+    .product-price {
+      font-size: 1.1rem;
+      color: #27ae60;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    /* WhatsApp Button with Pulse Animation */
+    .whatsapp-btn {
+      display: inline-block;
+      background-color: #25D366;
+      color: white;
+      text-decoration: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      font-weight: bold;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #128C7E;
+      transform: scale(1.05);
+    }
+
+    /* Page Entrance Animation */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(100);
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Decap CMS Script -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <h1>Welcome to My Store</h1>
+
+  <div class="product-grid">
+
+    <!-- Product 1 -->
+    <div class="product-card">
+      <div class="product-title">Premium Product A</div>
+      <div class="product-price">$25.00</div>
+      <a 
+        href="https://wa.me/1234567890?text=Hi!%20I%20am%20interested%20in%20buying%20Premium%20Product%20A" 
+        target="_blank" 
+        class="whatsapp-btn">
+        Order on WhatsApp
+      </a>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card">
+      <div class="product-title">Premium Product B</div>
+      <div class="product-price">$40.00</div>
+      <a 
+        href="https://wa.me/1234567890?text=Hi!%20I%20am%20interested%20in%20buying%20Premium%20Product%20B" 
+        target="_blank" 
+        class="whatsapp-btn">
+        Order on WhatsApp
+      </a>
+    </div>
+
+  </div>
+
 </body>
 </html>
