@@ -17,4 +17,6 @@ collections:
       - { label: "Price (QAR)", name: "price", widget: "number" }
       - { label: "Delivery Charge (QAR)", name: "delivery", widget: "number", default: 30 }
       - { label: "Description", name: "description", widget: "text", required: false }
-      - { label: "Product Images", name: "images", widget: "list", field: { label: "Image", name: "image", widget: "image" } }
+      - { label: "Main Image (Required)", name: "image", widget: "image" }
+      - { label: "Image 2 (Optional)", name: "image2", widget: "image", required: false }
+      - { label: "Image 3 (Optional)", name: "image3", widget: "image", required: false }
